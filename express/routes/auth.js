@@ -26,5 +26,23 @@ router.post('/login', (req, res) => {
       return res.send(token)
     })
 })
+router.put('/user', isAuthenticated, async (req, res) => {
+  try {
+    AuthController.UpdateUser(req.user, req.body.userName)
+    .then(()=> res.send(`User Updated`))
+  } catch (error) {
+    res.status(404).json({msg: `ERROR`})
+    console.error(error.message)
+  }
+})
 
+router.put('/password', isAuthenticated, async(req, res)=> {
+  try {
+    AuthController.UpdatePassword(req.user, req.body.password)
+    .then(()=> res.send(`Password Updated`))
+  } catch (error) {
+    res.status(404).json({msg: `ERROR`})
+    console.error(error.message)
+  }
+})
 module.exports = router

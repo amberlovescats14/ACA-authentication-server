@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const AuthRoutes = require('./express/routes/auth')
 
-mongoose.connect(/* INSERT DB CONNECTION */)
+mongoose.connect('mongodb+srv://amber123:amber123@cluster1-pzepi.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true } )
 
 const port = process.env.PORT || 4001
 const app = express()
